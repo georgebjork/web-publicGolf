@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Table } from 'react-bootstrap';
 
 
 
 function Scorecard({teebox}) {
     
-    console.log("Teebox:" + teebox);
+    console.log(teebox);
     function header() {
         const headerElements = [];
         headerElements.push(<th>Hole</th>);
@@ -33,7 +33,7 @@ function Scorecard({teebox}) {
             if(i+1 === 10){
                 teeboxData.push(<td> {teebox.yardageOut} </td>)
             }
-            teeboxData.push(<td></td>)
+            teeboxData.push(<td>{teebox.holes[i].yardage}</td>)
         }
         
         teeboxData.push(<td>{teebox.yardageIn}</td>)
@@ -52,7 +52,7 @@ function Scorecard({teebox}) {
                 parData.push(<td>{teebox.parOut}</td>)
             }
 
-            parData.push(<td></td>)
+            parData.push(<td>{teebox.holes[i].par}</td>)
         }
 
         parData.push(<td>{teebox.parIn}</td>)
@@ -71,7 +71,7 @@ function Scorecard({teebox}) {
                 strokeIndexData.push(<td></td>)
             }
 
-            strokeIndexData.push(<td></td>)
+            strokeIndexData.push(<td>{teebox.holes[i].handicap}</td>)
         }
         
         strokeIndexData.push(<td colSpan={3}></td>)
