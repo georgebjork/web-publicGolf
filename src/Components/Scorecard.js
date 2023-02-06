@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
-
+import { PencilIcon } from '@primer/octicons-react';
 
 
 function Scorecard({teebox}) {
@@ -90,34 +90,28 @@ function Scorecard({teebox}) {
 
     return (
         <>
-            <h3 className='mt-5'> {teebox.name} </h3>
-            <Table className="mt-3" striped bordered variant="dark" style={{"text-align": "center", "vertical-align": "middle"}}>
+           
+
+            <div class="d-flex justify-content-between mt-5">
+                <h3> {teebox.name} </h3>
+                <Button variant="success" disabled={editButtons} onClick={testFunction}>  <PencilIcon size={16} verticalAlign="middle" /> Edit </Button>
+            </div>
+
+            <Table className="mt-3" striped bordered variant="dark" size="lg" style={{"text-align": "center", "vertical-align": "middle"}}>
                 <thead>
                     <tr>
                         {header()}
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        {yardage()}
-                    </tr>
-
-                    <tr>
-                        {parData()}
-                    </tr>
-
-                    <tr>
-                        {strokeIndexData()}
-                    </tr>
-                    
+                    <tr> {yardage()} </tr>
+                    <tr> {parData()} </tr>
+                    <tr> {strokeIndexData()} </tr>
                 </tbody>
 
             </Table>
 
-            <div class="d-flex justify-content-end">
-                <Button variant="success" disabled={editButtons} size="lg" onClick={testFunction}> Edit </Button>
-            </div>
-            
+            <br className='mb-5'/>
         </>
     )
 }

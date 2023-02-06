@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 
-import { Navbar, Container, Nav, Modal, Button } from 'react-bootstrap';
-
+import { Navbar, Container, Nav, Modal, Button, NavDropdown, NavbarBrand, Form  } from 'react-bootstrap';
+import { MarkGithubIcon } from '@primer/octicons-react'; //https://primer.style/octicons/
 
 function Header() {
 
@@ -13,19 +13,43 @@ function Header() {
 
     return (
         <>
-            <Navbar expand="lg" bg="dark" variant="dark">
+
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+                
                 <Container>
-                    <Navbar.Brand href="#" className='display-1'>Public Golf</Navbar.Brand>
+                <Navbar.Brand href="/"> Public Golf </Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav" className='justify-content-end'>
-                        <Nav>
-                            <Nav.Link href='#'>foo</Nav.Link>
-                            <Nav.Link href="#">foo</Nav.Link>
-                            <Nav.Link href="#">foo</Nav.Link>
-                            <Nav.Link onClick={handleShow}>Golf Stats</Nav.Link>
+                    <Navbar.Collapse id="responsive-navbar-nav">
+
+                        <Nav className="me-auto">
+
+                            <Nav.Link href='#'>Courses</Nav.Link>
+                            <Nav.Link href="#">Profile</Nav.Link>
+                            <Nav.Link onClick={handleShow}>Stats</Nav.Link>
+
+                            {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                                <NavDropdown.Item href="#">Action</NavDropdown.Item>
+                                <NavDropdown.Item href="#">
+                                    Another action
+                                </NavDropdown.Item>
+                                <NavDropdown.Item href="#">Something</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item href="#">
+                                    Separated link
+                                </NavDropdown.Item>
+                            </NavDropdown> */}
+                            
                         </Nav>
+                        
+                        <Nav>                        
+                            <NavbarBrand href="https://github.com/georgebjork/web-publicGolf">
+                                <MarkGithubIcon size="medium" aria-label="GitHub"  />
+                            </NavbarBrand>
+                        </Nav>
+
                     </Navbar.Collapse>
                 </Container>
+
             </Navbar>
 
 
