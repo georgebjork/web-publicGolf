@@ -1,82 +1,91 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 
 
 
 function Scorecard({teebox}) {
-    
-    console.log(teebox);
+
+    const [holeData, setHoleData] = useState(teebox.holes);
+    const [editButtons, setEditButtons] = useState(false);
+
+    /**
+     * Returns the top row of the scorecard. 
+     */
     function header() {
         const headerElements = [];
         headerElements.push(<th>Hole</th>);
+        
+        // Push all of the hole numbers
+        for(let i in holeData) { headerElements.push(<th>{holeData[i].holeNumber}</th>); }
 
-        for(var i = 0; i < 18; i++) {
-            if(i+1 === 10){
-                headerElements.push(<td>Out</td>)
-            }
+        // This will add the label out. Between holes 9 and 10 
+        //splice(position, numberOfItemsToRemove, item)
+        headerElements.splice(10, 0, <th>Out</th>);
 
-            headerElements.push(<th>{i+1}</th>)
-        }
-
-        headerElements.push(<th>In</th>);
-        headerElements.push(<th>Total</th>);
-        headerElements.push(<th>Slope/Rating</th>);
-
+        //Push reamining items
+        headerElements.push(<th>In</th>, <th>Total</th>, <th>Slope/Rating</th>);
+        
+        //Return
         return(headerElements);
     }
 
-    function teeboxData() {
-        const teeboxData = []
-        teeboxData.push(<td>Yardage</td>)
+    function yardage() {
+        const yardageElements = [];
+        // Yardage title
+        yardageElements.push(<td>Yardage</td>);
 
-        for(var i = 0; i < 18; i++) {
-            if(i+1 === 10){
-                teeboxData.push(<td> {teebox.yardageOut} </td>)
-            }
-            teeboxData.push(<td>{teebox.holes[i].yardage}</td>)
-        }
+        // All of the hole yardages
+        for(let i in holeData) { yardageElements.push(<td>{holeData[i].yardage}</td>); }
         
-        teeboxData.push(<td>{teebox.yardageIn}</td>)
-        teeboxData.push(<td>{teebox.yardage}</td>)
-        teeboxData.push(<td>{teebox.slope} / {teebox.rating}</td>)
+        // This will splice in the yardage out total
+        yardageElements.splice(10, 0, <td> {teebox.yardageOut} </td>);
 
-        return(teeboxData)
+        // Push remaining elements
+        yardageElements.push(<td>{teebox.yardageIn}</td>);
+        yardageElements.push(<td>{teebox.yardage}</td>);
+        yardageElements.push(<td>{teebox.slope} / {teebox.rating}</td>);
+
+        return yardageElements
     }
 
     function parData() {
-        const parData = []
-        parData.push(<td>Par</td>)
+        const parElements = [];
+        // Par title
+        parElements.push(<td>Par</td>);
 
-        for(var i = 0; i < 18; i++) {
-            if(i+1 === 10){
-                parData.push(<td>{teebox.parOut}</td>)
-            }
 
-            parData.push(<td>{teebox.holes[i].par}</td>)
-        }
+        for(let i in holeData) { parElements.push(<td>{holeData[i].par}</td>); }
 
-        parData.push(<td>{teebox.parIn}</td>)
-        parData.push(<td>{teebox.par}</td>)
-        parData.push(<td colSpan={1}></td>)
+        // This will splice in the par out total
+        parElements.splice(10, 0, <td> {teebox.parOut} </td>);
 
-        return(parData)
+        parElements.push(<td>{teebox.parIn}</td>);
+        parElements.push(<td>{teebox.par}</td>);
+        parElements.push(<td colSpan={1}></td>);
+
+        return parElements;
     }
 
     function strokeIndexData() {
-        const strokeIndexData = []
-        strokeIndexData.push(<td>Handicap</td>)
+        const strokeIndexElements = [];
 
-        for(var i = 0; i < 18; i++) {
-            if(i+1 === 10){
-                strokeIndexData.push(<td></td>)
-            }
+        // Handicap title
+        strokeIndexElements.push(<td>Handicap</td>);
 
-            strokeIndexData.push(<td>{teebox.holes[i].handicap}</td>)
-        }
+        for(let i in holeData) { strokeIndexElements.push(<td>{holeData[i].handicap}</td>); }
         
-        strokeIndexData.push(<td colSpan={3}></td>)
+        // This will splice in a blank cell
+        strokeIndexElements.splice(10, 0, <td></td>);
+        strokeIndexElements.push(<td colSpan={3}></td>);
 
-        return(strokeIndexData)
+        return strokeIndexElements;
+    }
+
+    function testFunction() {
+        const updatedHoleData = [...holeData];
+        const hole = updatedHoleData.find(h => h.holeNumber === 1);
+        hole.yardage++;
+        setHoleData(updatedHoleData);
     }
 
     return (
@@ -90,7 +99,7 @@ function Scorecard({teebox}) {
                 </thead>
                 <tbody>
                     <tr>
-                        {teeboxData()}
+                        {yardage()}
                     </tr>
 
                     <tr>
@@ -106,7 +115,7 @@ function Scorecard({teebox}) {
             </Table>
 
             <div class="d-flex justify-content-end">
-                <Button variant="success" disabled={true} size="lg"> Edit </Button>
+                <Button variant="success" disabled={editButtons} size="lg" onClick={testFunction}> Edit </Button>
             </div>
             
         </>
