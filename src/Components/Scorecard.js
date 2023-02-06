@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 
 
 
@@ -104,6 +104,11 @@ function Scorecard({teebox}) {
                 </tbody>
 
             </Table>
+
+            <div class="d-flex justify-content-end">
+                <Button variant="success" disabled={true} size="lg"> Edit </Button>
+            </div>
+            
         </>
     )
 }
