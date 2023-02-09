@@ -6,7 +6,7 @@ import { PencilIcon } from '@primer/octicons-react';
 function Scorecard({teebox}) {
 
     const [holeData, setHoleData] = useState(teebox.holes);
-    const [editButtons, setEditButtons] = useState(false);
+    const [editButton, setEditButton] = useState(false);
 
     /**
      * Returns the top row of the scorecard. 
@@ -94,10 +94,10 @@ function Scorecard({teebox}) {
 
             <div class="d-flex justify-content-between mt-5">
                 <h3> {teebox.name} </h3>
-                <Button variant="success" disabled={editButtons} onClick={testFunction}>  <PencilIcon size={16} verticalAlign="middle" /> Edit </Button>
+                <Button variant="success" disabled={editButton} onClick={testFunction}>  <PencilIcon size={16} verticalAlign="middle" /> Edit </Button>
             </div>
 
-            <Table className="mt-3" striped bordered variant="dark" size="lg" style={{"text-align": "center", "vertical-align": "middle"}}>
+            <Table className="mt-3" striped bordered responsive variant="dark" size="lg" style={{"text-align": "center", "vertical-align": "middle"}}>
                 <thead>
                     <tr>
                         {header()}

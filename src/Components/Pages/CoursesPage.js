@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { getCourses } from '../api/courseApi';
 
 function CoursesPage() {
 
@@ -8,16 +9,13 @@ function CoursesPage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5239/api/course')
-           .then((response) => response.json())
-           .then((data) => {
-              //console.log(data);
-              setCourses(data);
-              setIsLoading(false);
-           })
-           .catch((err) => {
-              console.log("Error! " + err.message);
-           });
+        getCourses().then((response) => {
+          setCourses(response.data);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+            console.log("Error! " + err.message);
+        });
     }, []);
 
     function returnSpinner() {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"; 
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
+import { getCoursesById } from '../api/courseApi';
 import Scorecard from "../Scorecard";
 
 function DisplayCourse () {
@@ -14,15 +15,13 @@ function DisplayCourse () {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:5239/api/course/" + courseId)
-           .then((response) => response.json())
-           .then((data) => {
-                setTeeboxes(data[0].teeboxes)
-                setIsLoading(false);
-           })
-           .catch((err) => {
-              console.log("Error! " + err.message);
-           });
+        getCoursesById(courseId).then((response) => {
+            setTeeboxes(response.data[0].teeboxes)
+            setIsLoading(false);
+        })
+        .catch((err) => {
+            console.log("Error! " + err.message);
+        });
     }, []);
 
     function returnSpinner() {
