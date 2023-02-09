@@ -1,24 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import Scorecard from './Scorecard';
 
 function Home() {
-
-    const [courses, setCourses] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:5239/api/course')
-           .then((response) => response.json())
-           .then((data) => {
-              //console.log(data);
-              setCourses(data);
-           })
-           .catch((err) => {
-              console.log("Error! " + err.message);
-           });
-    }, []);
-
 
     let sampleData = {
       "id": 3,
@@ -672,8 +656,6 @@ function Home() {
             <h3>Why are we making Public Golf?</h3>
             <p>If you're a developer making a golf-related application, you'll know getting data on golf courses is hard. The data is either locked behind a paywall, out of date, or it's just wrong. Public Golf seeks to solve this by providing you, the developer, with all of the information you need for free! If there's something wrong with the data, feel free to change it with our user-friendly interface! </p> 
             
-
-            { courses.map((course => <li> <Link to={`/course/${course.id}/${course.name}`}> {course.name} </Link></li>)) }
             <br></br>
             <h3> Current State of Public Golf </h3>
             <p> Currently our database and API are in development and not live quite yet. Below we have some locally stored data (from our own database! ) so you can begin to see what our user-interface might look like! Stay tuned for more updates.</p>

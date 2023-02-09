@@ -23,8 +23,8 @@ function Header() {
 
                         <Nav className="me-auto">
 
-                            <Nav.Link href='#'>Courses</Nav.Link>
-                            <Nav.Link href="#">Profile</Nav.Link>
+                            <Nav.Link href='/courses'>Courses</Nav.Link>
+                            <Nav.Link href="/profile">Profile</Nav.Link>
                             <Nav.Link onClick={handleShow}>Stats</Nav.Link>
 
                             {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
@@ -41,10 +41,10 @@ function Header() {
                             
                         </Nav>
                         
-                        <Nav>                        
-                            <NavbarBrand href="https://github.com/georgebjork/web-publicGolf">
-                                <MarkGithubIcon size="medium" aria-label="GitHub"  />
-                            </NavbarBrand>
+                        <Nav>           
+                            <Nav.Link href="https://github.com/georgebjork/web-publicGolf">
+                                <MarkGithubIcon size="20px" aria-label="GitHub"  />
+                            </Nav.Link>             
                         </Nav>
 
                     </Navbar.Collapse>
