@@ -2,21 +2,20 @@ import React, { useState, useEffect } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { getCoursesById } from '../api/courseApi';
-import Scorecard from "../Scorecard";
+import Scorecard from "../Scorecard/Scorecard";
 
 function DisplayCourse () {
 
     // Grab from the url
     const { courseName, courseId } = useParams();
 
-    // This will hold the teeboxes
-    const [teeboxes, setTeeboxes] = useState([]);
+    const [course, setCourse] = useState();
 
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         getCoursesById(courseId).then((response) => {
-            setTeeboxes(response.data[0].teeboxes)
+            setCourse(response.data[0]);
             setIsLoading(false);
         })
         .catch((err) => {
@@ -35,15 +34,14 @@ function DisplayCourse () {
         );
     }
 
-    function returnScoreCards() {
-        return teeboxes.map((teebox => <Scorecard key={teebox.id} teebox={teebox} /> ));
+    function returnScorecard() {
+        return <Scorecard course={course} />
     }
 
     return (
         <>
             <Container>
-                <h1 className="mt-5">{courseName}</h1>
-                { isLoading ? returnSpinner() : returnScoreCards() }
+                { isLoading ? returnSpinner() : returnScorecard() }
             </Container>
         </>
     )

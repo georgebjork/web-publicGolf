@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Scorecard from './Scorecard';
+import Scorecard from './Scorecard/Scorecard';
+import TestComp from './testComp';
 
 function Home() {
 
@@ -660,8 +661,8 @@ function Home() {
             <h3> Current State of Public Golf </h3>
             <p> Currently our database and API are in development and not live quite yet. Below we have some locally stored data (from our own database! ) so you can begin to see what our user-interface might look like! Stay tuned for more updates.</p>
             
-            <h1 className='mt-5'>{sampleData['name']}</h1>
-            {sampleData['teeboxes'].map((teebox => <Scorecard teebox={teebox}/>))}
+            {/* <TestComp /> */}
+            <Scorecard course={sampleData} />
 
             <br className='mb-5'/>
             {/* <p>Our website is built with the latest web technologies, providing a solid foundation for developers to build upon. With a user-friendly interface and robust search capabilities, users can easily find the information they need. Our public moderation system ensures the quality of the information and keeps it up-to-date, while our API provides a simple and flexible way for developers to access this data.</p> */}
