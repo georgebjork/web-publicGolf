@@ -5,9 +5,10 @@ import { Route, Routes} from "react-router-dom";
 
 
 import Header from './Components/Header';
-import DisplayCourse from './Components/Course/DisplayCourse';
+import DisplayCoursePage from './Components/Pages/DisplayCoursePage';
 import ProfilePage from './Components/Pages/ProfilePage';
 import CoursesPage from './Components/Pages/CoursesPage';
+import EditCoursePage from './Components/Pages/EditCoursePage';
 
 import NotFound from './Components/NotFound.js'
 
@@ -17,9 +18,11 @@ function App() {
       <Header />
       <Routes>          
         <Route exact path="/" element={<Home />} />
-        <Route path="courses/:courseId/:courseName" element={<DisplayCourse/>}/>
         <Route path="profile" element={<ProfilePage/>}/>
         <Route path="courses" element={<CoursesPage/>}/>
+
+        <Route path="courses/:courseId/:courseName" element={<DisplayCoursePage/>}/>
+        <Route path="courses/:courseId/:courseName/edit" element={<EditCoursePage/>}/>
 
         {/* Route Not Found */}
         <Route path="*" element={<NotFound/>} status={404}/>

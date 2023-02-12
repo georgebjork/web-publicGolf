@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { getCoursesById } from '../api/courseApi';
 import Scorecard from "../Scorecard/Scorecard";
 
-function DisplayCourse () {
+function DisplayCoursePage() {
 
     // Grab from the url
     const { courseName, courseId } = useParams();
@@ -48,4 +48,4 @@ function DisplayCourse () {
 }
 
 
-export default DisplayCourse;
+export default DisplayCoursePage;
