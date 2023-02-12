@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Scorecard from './Scorecard/Scorecard';
-import TestComp from './testComp';
+import Scorecard from '../Scorecard/Scorecard';
+import TestComp from '../testComp';
 
-function Home() {
+function HomePage() {
 
     let sampleData = {
       "id": 3,
@@ -674,5 +674,5 @@ function Home() {
 }
 
 
-export default Home;
+export default HomePage;
 
