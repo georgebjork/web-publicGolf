@@ -1,5 +1,5 @@
 import React from "react";
-import "./Scorecard.css"
+import "./Styles/Scorecard.css"
 
 function TeeboxYardage({teebox}) {  
 
