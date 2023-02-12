@@ -7,8 +7,6 @@ import TeeboxYardage from './TeeboxYardage.js'
 import CoursePar from './CoursePar.js';
 import CourseHandicap from './CourseHandicap.js';
 
-import { useLocation, Link } from 'react-router-dom'
-
 function Scorecard({course}) {
 
     const [editButton, setEditButton] = useState(false);

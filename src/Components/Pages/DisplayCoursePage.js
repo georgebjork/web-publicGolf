@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import { getCoursesById } from '../api/courseApi';
+import LoadingSpinner from "../LoadingSpinner"
 import Scorecard from "../Scorecard/Scorecard";
 
 function DisplayCoursePage() {
@@ -23,17 +24,6 @@ function DisplayCoursePage() {
         });
     }, []);
 
-    function returnSpinner() {
-        return(
-            <div class="spinner d-flex justify-content-center">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden" size="lg">Loading...</span>
-                </Spinner>
-            </div>
-            
-        );
-    }
-
     function returnScorecard() {
         return <Scorecard course={course} />
     }
@@ -41,7 +31,7 @@ function DisplayCoursePage() {
     return (
         <>
             <Container>
-                { isLoading ? returnSpinner() : returnScorecard() }
+                { isLoading ? <LoadingSpinner /> : returnScorecard() }
             </Container>
         </>
     )

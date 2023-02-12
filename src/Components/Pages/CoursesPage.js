@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Container, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { getCourses } from '../api/courseApi';
+import LoadingSpinner from "../LoadingSpinner"
 
 function CoursesPage() {
 
@@ -18,17 +19,6 @@ function CoursesPage() {
         });
     }, []);
 
-    function returnSpinner() {
-        return(
-            <div class="spinner d-flex justify-content-center">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden" size="lg">Loading...</span>
-                </Spinner>
-            </div>
-            
-        );
-    }
-
     function returnCourses() {
         return courses.map((course => <li> <Link to={`/courses/${course.id}/${course.name}`}> {course.name} </Link></li>));
     }
@@ -37,7 +27,7 @@ function CoursesPage() {
             <Container>
                 <h1>Courses Page!!!</h1>
 
-                { isLoading ? returnSpinner() : returnCourses() }
+                { isLoading ? <LoadingSpinner /> : returnCourses() }
 
             </Container>
             
