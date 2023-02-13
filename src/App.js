@@ -19,10 +19,12 @@ function App() {
       <Routes>          
         <Route exact path="/" element={<HomePage/>} />
         <Route path="profile" element={<ProfilePage/>}/>
-        <Route path="courses" element={<CoursesPage/>}/>
 
-        <Route path="courses/:courseId/:courseName" element={<DisplayCoursePage/>}/>
-        <Route path="courses/:courseId/:courseName/edit" element={<EditCoursePage/>}/>
+        <Route path="courses">
+          <Route index element={<CoursesPage/>} />
+          <Route path=":courseId/:courseName" element={<DisplayCoursePage/>}/>
+          <Route path=":courseId/:courseName/edit" element={<EditCoursePage/>}/>
+        </Route>
 
         {/* Route Not Found */}
         <Route path="*" element={<NotFound/>} status={404}/>
