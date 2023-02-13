@@ -31,18 +31,6 @@ function EditCoursePage() {
                 
                     <h1 className="mt-5 mb-5">Edit {course.name} </h1> 
 
-                    
-                    <h3> Holes </h3>
-                    <Table className="mt-3" striped responsive variant="dark" size="lg" style={{"text-align": "center", "vertical-align": "middle"}}> 
-                        <thead>
-                            <tr>
-                                <CourseHoles />
-                            </tr>
-                        </thead>
-                    </Table>
-
-
-
                     <h3> Teeboxes </h3>
                     { course["teeboxes"].map(teebox => <EditTeeboxYardage teebox={teebox} />)}
 
