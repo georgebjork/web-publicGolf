@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Container, Table } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
-import { getCoursesById } from '../api/courseApi';
-import LoadingSpinner from "../LoadingSpinner";
+import { getCoursesById } from '../../api/courseApi';
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
-import CourseHoles from "../Scorecard/CourseHoles"
-import EditTeeboxYardage from "../ScorecardEdit/EditTeeboxYardage"
+import EditTeeboxYardage from "../../Components/ScorecardEdit/EditTeeboxYardage"
 
-function EditCoursePage() {
+function EditCourse() {
 
     const [course, setCourse] = useState();
-    const { courseName, courseId } = useParams();
+    const { courseId } = useParams();
 
     const [isLoading, setIsLoading] = useState(true);
 
@@ -45,4 +44,4 @@ function EditCoursePage() {
     )
 }
 
-export default EditCoursePage
+export default EditCourse;

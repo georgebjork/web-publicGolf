@@ -1,9 +1,8 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Scorecard from '../Scorecard/Scorecard';
-import TestComp from '../testComp';
+import Scorecard from '../../Components/Scorecard/Scorecard';
 
-function HomePage() {
+function index() {
 
     let sampleData = {
       "id": 3,
@@ -674,5 +673,5 @@ function HomePage() {
 }
 
 
-export default HomePage;
+export default index;
 

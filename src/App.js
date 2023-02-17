@@ -1,14 +1,15 @@
 import './App.css';
 import React from 'react';
-import HomePage from './Components/Pages/HomePage';
+
 import { Route, Routes} from "react-router-dom";
 
-
 import Header from './Components/Header';
-import DisplayCoursePage from './Components/Pages/DisplayCoursePage';
-import ProfilePage from './Components/Pages/ProfilePage';
-import CoursesPage from './Components/Pages/CoursesPage';
-import EditCoursePage from './Components/Pages/EditCoursePage';
+
+import HomePage from './pages/Home';
+import CourseInfo from './pages/CourseInfo';
+import ProfilePage from './pages/Profile';
+import CoursesPage from './pages/Courses';
+import EditCoursePage from './pages/EditCourses';
 
 import NotFound from './Components/NotFound.js'
 
@@ -22,7 +23,7 @@ function App() {
 
         <Route path="courses">
           <Route index element={<CoursesPage/>} />
-          <Route path=":courseId/:courseName" element={<DisplayCoursePage/>}/>
+          <Route path=":courseId/:courseName" element={<CourseInfo/>}/>
           <Route path=":courseId/:courseName/edit" element={<EditCoursePage/>}/>
         </Route>
 

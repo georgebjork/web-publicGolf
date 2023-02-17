@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProfilePage() {
+function index() {
 
 
     return(
@@ -11,4 +11,4 @@ function ProfilePage() {
 }
 
 
-export default ProfilePage;
+export default index;

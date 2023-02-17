@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react"; 
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
-import { getCoursesById } from '../api/courseApi';
-import LoadingSpinner from "../LoadingSpinner"
-import Scorecard from "../Scorecard/Scorecard";
+import { getCoursesById } from '../../api/courseApi';
+import LoadingSpinner from "../../Components/LoadingSpinner"
+import Scorecard from "../../Components/Scorecard/Scorecard";
 
-function DisplayCoursePage() {
+function CourseScorecard() {
 
     // Grab from the url
     const { courseName, courseId } = useParams();
@@ -38,4 +38,4 @@ function DisplayCoursePage() {
 }
 
 
-export default DisplayCoursePage;
+export default CourseScorecard;

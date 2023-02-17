@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import { Container, Spinner } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { getCourses } from '../api/courseApi';
-import LoadingSpinner from "../LoadingSpinner"
+import { getCourses } from '../../api/courseApi';
+import LoadingSpinner from "../../Components/LoadingSpinner"
 
-function CoursesPage() {
+function AllCourses() {
 
     const [courses, setCourses] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -36,4 +36,4 @@ function CoursesPage() {
 }
 
 
-export default CoursesPage;
+export default AllCourses;
