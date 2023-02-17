@@ -5,7 +5,8 @@ function index() {
 
     return(
         <>
-            <AllCourses />            
+            <h1>Courses Page!!!</h1>
+            <AllCourses/>            
         </>
     )
 }

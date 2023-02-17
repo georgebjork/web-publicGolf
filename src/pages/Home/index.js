@@ -660,14 +660,9 @@ function index() {
             <h3> Current State of Public Golf </h3>
             <p> Currently our database and API are in development and not live quite yet. Below we have some locally stored data (from our own database! ) so you can begin to see what our user-interface might look like! Stay tuned for more updates.</p>
             
-            {/* <TestComp /> */}
             <Scorecard course={sampleData} />
 
             <br className='mb-5'/>
-            {/* <p>Our website is built with the latest web technologies, providing a solid foundation for developers to build upon. With a user-friendly interface and robust search capabilities, users can easily find the information they need. Our public moderation system ensures the quality of the information and keeps it up-to-date, while our API provides a simple and flexible way for developers to access this data.</p> */}
-            {/* <p>Whether you're building a golf course booking platform, a golf club management system, or a mobile app for golf enthusiasts, Public Golf is the perfect partner. With our commitment to open-source development, we aim to provide a valuable resource for the developer community and enable the creation of innovative golf-related products.</p> */}
-            {/* <p>So if you're a developer looking to take your golf-related project to the next level, look no further. Join us on our mission to make golf information accessible and useful for everyone. We look forward to seeing what you will build with Public Golf.</p> */}
-            {/*  */}
        </Container>
     );
 }

@@ -1,36 +1,30 @@
 import React, {useEffect, useState} from 'react'
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { getCourses } from '../../api/courseApi';
 import LoadingSpinner from "../../Components/LoadingSpinner"
+import { useFetch } from '../../hooks/useFetch';
 
 function AllCourses() {
 
     const [courses, setCourses] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
-    useEffect(() => {
-        getCourses().then((response) => {
-          setCourses(response.data);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-            console.log("Error! " + err.message);
-        });
-    }, []);
+    const { isLoading, data, serverError } = useFetch('http://localhost:5239/api/course');
 
     function returnCourses() {
-        return courses.map((course => <li> <Link to={`/courses/${course.id}/${course.name}`}> {course.name} </Link></li>));
+        return data.map((course => <li> <Link to={`/courses/${course.id}/${course.name}`}> {course.name} </Link></li>));
     }
+
     return(
         <>
             <Container>
-                <h1>Courses Page!!!</h1>
+                { isLoading && <LoadingSpinner /> }
 
-                { isLoading ? <LoadingSpinner /> : returnCourses() }
-
+                {!isLoading && serverError ? (
+                    <h3> Error </h3>
+                ) : (
+                    returnCourses()
+                )}
             </Container>
-            
         </>
     )
 }
