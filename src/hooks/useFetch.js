@@ -4,7 +4,7 @@ import axios from 'axios';
 export function useFetch (url) {
 
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
     const [serverError, setServerError] = useState(null);
 
     useEffect(() => {

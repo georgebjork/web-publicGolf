@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react"; 
 import { Container, Spinner } from "react-bootstrap";
 import { useParams } from 'react-router-dom';
-import { getCoursesById } from '../../api/courseApi';
+
+import { useFetch } from '../../hooks/useFetch';
+
 import LoadingSpinner from "../../Components/LoadingSpinner"
 import Scorecard from "../../Components/Scorecard/Scorecard";
 
@@ -12,30 +14,24 @@ function CourseScorecard() {
 
     const [course, setCourse] = useState();
 
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        getCoursesById(courseId).then((response) => {
-            setCourse(response.data[0]);
-            setIsLoading(false);
-        })
-        .catch((err) => {
-            console.log("Error! " + err.message);
-        });
-    }, []);
-
-    function returnScorecard() {
-        return <Scorecard course={course} />
-    }
+    const { isLoading, data, serverError } = useFetch(`http://localhost:5239/api/course/${courseId}`);
 
     return (
         <>
-            <Container>
-                { isLoading ? <LoadingSpinner /> : returnScorecard() }
-            </Container>
+            
+            { isLoading && <LoadingSpinner /> }
+
+            {!isLoading && serverError ? (
+                <h3> Error </h3>
+            ) : (
+                data && <Scorecard course={data[0]} />
+            )}
+    
         </>
     )
 }
 
 
 export default CourseScorecard;
+
+//
