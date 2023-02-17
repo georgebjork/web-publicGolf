@@ -5,8 +5,6 @@ import { useFetch } from '../../hooks/useFetch';
 
 function AllCourses() {
 
-    const [courses, setCourses] = useState([]);
-
     const { isLoading, data, serverError } = useFetch('http://localhost:5239/api/course');
 
     return(
