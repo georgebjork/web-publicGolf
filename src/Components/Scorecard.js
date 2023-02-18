@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import { PencilIcon } from '@primer/octicons-react';
 
-import "./Styles/Scorecard.css"
+import "./Scorecard.css"
 
 export function Scorecard({course}) {
 

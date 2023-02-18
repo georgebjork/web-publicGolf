@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Scorecard } from '../../Components/Scorecard/Scorecard';
+import { Scorecard } from '../../Components/Scorecard';
 
 function index() {
 

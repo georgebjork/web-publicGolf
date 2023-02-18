@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react"; 
-import { Container, Spinner } from "react-bootstrap";
+import React, { useState } from "react"; 
 import { useParams } from 'react-router-dom';
 
 import { useFetch } from '../../hooks/useFetch';
 
 import LoadingSpinner from "../../Components/LoadingSpinner"
-import { Scorecard } from "../../Components/Scorecard/Scorecard";
+import { Scorecard } from "../../Components/Scorecard";
 
 function CourseScorecard() {
 

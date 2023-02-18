@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Table } from "react-bootstrap";
-import { CourseHoles } from "../Scorecard/Scorecard.js"
+import { CourseHoles } from "../Scorecard.js"
 import "./EditTeeboxYardage.css"
 
 function EditTeeboxYardage({teebox}) {
