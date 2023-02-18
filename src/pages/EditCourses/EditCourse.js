@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useFetch } from "../../hooks/useFetch";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 
-import EditTeeboxYardage from "../../Components/ScorecardEdit/EditTeeboxYardage"
+import EditTeeboxYardage from "../../Components/EditTeeboxYardage"
 
 function EditCourse() {
 
