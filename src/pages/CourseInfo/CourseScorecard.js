@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React from "react"; 
 import { useParams } from 'react-router-dom';
 
 import { useFetch } from '../../hooks/useFetch';
@@ -9,9 +9,7 @@ import { Scorecard } from "../../Components/Scorecard";
 function CourseScorecard() {
 
     // Grab from the url
-    const { courseName, courseId } = useParams();
-
-    const [course, setCourse] = useState();
+    const { courseId } = useParams();
 
     const { isLoading, data, serverError } = useFetch(`http://localhost:5239/api/course/${courseId}`);
 
