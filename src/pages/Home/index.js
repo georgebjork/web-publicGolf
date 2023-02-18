@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import Scorecard from '../../Components/Scorecard/Scorecard';
+import { Scorecard } from '../../Components/Scorecard/Scorecard';
 
 function index() {
 
@@ -646,7 +646,6 @@ function index() {
         }
       ]
     }
-
 
     return(
        <Container className='mt-5'>
