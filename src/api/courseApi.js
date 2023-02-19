@@ -15,7 +15,7 @@ export async function updateHole(teebox_id, hole) {
 
     console.log(hole)
 
-    return axios.put(baseURL + `/course/${teebox_id}/update/hole`, hole)
+    return await axios.put(baseURL + `/course/${teebox_id}/update/hole`, hole)
 }
 
 

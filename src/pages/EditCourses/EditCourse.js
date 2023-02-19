@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from "react";
+import React, { useRef, createRef, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
 import { CourseHoles } from "../../Components/Scorecard"
 import { useParams } from 'react-router-dom';
@@ -6,18 +6,27 @@ import { useFetch } from "../../hooks/useFetch";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 
 import EditTeeboxYardage from "../../Components/EditTeeboxYardage"
+import "./index.css"
 
 function EditCourse() {
 
     const { courseId } = useParams();
     const teeboxRefs = useRef([]);
 
+    const [btnIsLoading, setBtnIsLoading] = useState(false);
+
     const { isLoading, data, serverError } = useFetch(`http://localhost:5239/api/course/${courseId}`);
     
-    function handleClick() {
-        teeboxRefs.current.forEach((ref) => {
+    async function handleClick() {
+        setBtnIsLoading(true);
+        await teeboxRefs.current.forEach(async (ref) => {
             ref.current.handleSubmit();
         });
+
+        setTimeout(() => {
+            setBtnIsLoading(false);
+        }, 2000);
+        
     }
 
     return(
@@ -47,8 +56,12 @@ function EditCourse() {
                             </tbody>
 
                         </Table>
-                         
-                        <Button onClick={handleClick}> Submit </Button>
+                        
+                        <div class="d-flex justify-content-end mt-2">
+                            <Button className="button"variant="primary" disabled> Add Teebox </Button>
+                            <Button className="button"variant="success" onClick={handleClick} disabled={btnIsLoading}> {btnIsLoading ? "Updating..." : "Submit"} </Button>
+                        </div>
+                        
                         <h3> Par </h3>
                         <p> Par editing will go here </p>
                         
