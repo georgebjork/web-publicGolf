@@ -6,8 +6,7 @@ import "./Scorecard.css"
 
 export function Scorecard({course}) {
 
-    const [editButton, setEditButton] = useState(false);
-    setEditButton(false);
+    const [editButton] = useState(false);
 
     return (
         <>
