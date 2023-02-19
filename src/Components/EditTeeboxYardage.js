@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import { CourseHoles } from "./Scorecard.js"
+import { updateHole } from "../api/courseApi.js";
 import "./EditTeeboxYardage.css"
 
 function EditTeeboxYardage({teebox}) {
@@ -40,7 +41,8 @@ function EditTeeboxYardage({teebox}) {
     }
 
     function handleSubmit() {
-        console.log(newData);
+
+        newData.forEach((element) => updateHole(teebox.id, element));
     }
 
 
