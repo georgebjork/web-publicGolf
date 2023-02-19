@@ -12,11 +12,12 @@ export async function getCoursesById(course_id) {
 }
 
 export async function updateHole(teebox_id, hole) {
-
-    console.log(hole)
-
     return await axios.put(baseURL + `/course/${teebox_id}/update/hole`, hole)
 }
 
+
+export async function updateTeebox(teebox) {
+    return await axios.put(baseURL + `/course/${teebox.id}/update/teebox`, teebox)
+}
 
 

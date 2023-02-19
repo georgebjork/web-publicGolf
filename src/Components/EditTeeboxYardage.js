@@ -1,10 +1,11 @@
 import React, { useState, forwardRef, useImperativeHandle } from "react";
-import { updateHole } from "../api/courseApi.js";
+import { updateHole, updateTeebox } from "../api/courseApi.js";
 import "./EditTeeboxYardage.css"
 
 function EditTeeboxYardage({teebox}, ref) {
 
     const [holes, setHoles] = useState(teebox.holes);
+    
     const [newData, setNewData] = useState([]);
 
     const yardageElements = [];
@@ -28,6 +29,29 @@ function EditTeeboxYardage({teebox}, ref) {
         handleSubmit
     }));
 
+    function addYardages() {
+        let frontNine = 0
+        let backNine = 0
+        let total = 0;
+
+        // Add the front nine
+        for(let i = 0; i < 9; i++) {
+            frontNine += holes[i].yardage;
+        }
+
+        // Add the back nine
+        for(let i = 9; i < 18; i++) {
+            backNine += holes[i].yardage;
+        }
+
+        // Total 
+        total = frontNine + backNine;
+
+        teebox.yardageOut = frontNine;
+        teebox.yardageIn = backNine;
+        teebox.yardage = total;
+    }
+
     function handleInputChange(e) {
         // This will be our input checker
         if(isNaN(e.target.value) || e.target.value === "") {
@@ -42,10 +66,12 @@ function EditTeeboxYardage({teebox}, ref) {
 
         // Set the new data
         setNewData(prevData => [...prevData, hole]);
+        addYardages();
     }
 
     function handleSubmit() {
         newData.forEach((element) => updateHole(teebox.id, element));
+        //updateTeebox(teebox);
     }
 
 
