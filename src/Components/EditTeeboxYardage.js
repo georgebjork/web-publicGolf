@@ -25,7 +25,8 @@ function EditTeeboxYardage({teebox}) {
     yardageElements.push(<td>{teebox.slope} / {teebox.rating}</td>);
 
     function handleInputChange(e) {
-             
+        
+        // This will be our input checker
         if(isNaN(e.target.value) || e.target.value === "") {
             return;
         }
